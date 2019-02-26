@@ -138,7 +138,7 @@ class List {
   /**
    * Sanitizer rules
    */
-  get sanitizer() {
+  static get sanitize() {
     return {
       style: {},
       items: {
