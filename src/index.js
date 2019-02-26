@@ -10,7 +10,7 @@ require('./index.css').toString();
  */
 
 /**
- * List Tool for the CodeX Editor 2.0
+ * List Tool for the Editor.js 2.0
  */
 class List {
   /**
@@ -42,7 +42,7 @@ class List {
    * @param {{data: ListData, config: object, api: object}}
    *   data — previously saved data
    *   config - user config for Tool
-   *   api - CodeX Editor API
+   *   api - Editor.js API
    */
   constructor({data, config, api}) {
     /**
