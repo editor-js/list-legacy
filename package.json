@@ -10,7 +10,7 @@
   ],
   "description": "List Tool for Editor.js",
   "license": "MIT",
-  "repository": "https://github.com/editorjs/list",
+  "repository": "https://github.com/editor-js/list",
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack --mode production",
