@@ -2,7 +2,7 @@
 
 # List Tool for Editor.js
 
-This Tool for the [Editor.js](https://ifmo.su/editor) allows you to add ordered or unordered (bulleted) lists to your article.
+This Tool for the [Editor.js](https://editorjs.io) allows you to add ordered or unordered (bulleted) lists to your article.
 
 ![](assets/example.gif)
 
