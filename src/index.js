@@ -402,19 +402,19 @@ class List {
    */
   pasteHandler(element) {
     const {tagName: tag} = element;
-    let type;
+    let style;
 
     switch(tag) {
       case 'OL':
-        type = 'ordered';
+        style = 'ordered';
         break;
       case 'UL':
       case 'LI':
-        type = 'unordered';
+        style = 'unordered';
     }
 
     const data = {
-      type,
+      style,
       items: []
     };
 
