@@ -305,10 +305,10 @@ class List {
     const items = this._elements.wrapper.querySelectorAll(`.${this.CSS.item}`);
 
     for (let i = 0; i < items.length; i++) {
-      const value = items[i].innerHTML.replace('<br>', ' ').trim();
+      const value = items[i].innerHTML.replace(/<br>|&nbsp;/gi, ' ').trim();
 
       if (value) {
-        this._data.items.push(items[i].innerHTML);
+        this._data.items.push(value);
       }
     }
 
