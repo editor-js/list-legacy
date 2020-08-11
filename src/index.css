@@ -2,6 +2,8 @@
     margin: 0;
     padding-left: 40px;
     outline: none;
+    display: inline-block;
+    text-align: left;
 
     &__item {
         padding: 5.5px 0 5.5px 3px;
