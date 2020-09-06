@@ -115,7 +115,7 @@ class List {
 
       switch (event.keyCode) {
         case ENTER:
-          this.getOutofList(event);
+          this.appendNewItem(event);
           break;
         case BACKSPACE:
           this.backspace(event);
@@ -360,28 +360,55 @@ class List {
    *
    * @param {KeyboardEvent} event
    */
-  getOutofList(event) {
-    const items = this._elements.wrapper.querySelectorAll('.' + this.CSS.item);
-
-    /**
-     * Save the last one.
-     */
-    if (items.length < 2) {
-      return;
-    }
-
+  appendNewItem(event) {
+    event.preventDefault();
+    let items = this._elements.wrapper.querySelectorAll('.' + this.CSS.item);
     const lastItem = items[items.length - 1];
     const currentItem = this.currentItem;
 
-    /** Prevent Default li generation if item is empty */
     if (currentItem === lastItem && !lastItem.textContent.trim().length) {
-      /** Insert New Block and set caret */
-      currentItem.parentElement.removeChild(currentItem);
-      this.api.blocks.insert(undefined, undefined, undefined, undefined, true);
-      event.preventDefault();
-      event.stopPropagation();
+
+      let parent = currentItem.parentElement;
+      const currentBlock = this.api.blocks.getCurrentBlockIndex();
+
+      /** Remove current item **/
+      parent.removeChild(currentItem);
+
+      if (!parent.hasChildNodes()) {
+        /** Delete current block **/
+        this.api.blocks.delete(currentBlock);
+
+      } else {
+        /** Insert New Block as set caret **/
+        this.api.blocks.insert();
+        this.api.caret.setToBlock(currentBlock + 1);
+        event.stopPropagation()
+      }
+
+      return;
     }
+
+    /** Create new list item **/
+    const newItem = this._elements.wrapper.appendChild(this._make('li', this.CSS.item));
+
+    /** Move caret to new item **/
+    this.moveCaretToEnd(newItem);
   }
+
+  /**
+   * Moves caret to the end of contentEditable element
+   * @param {HTMLElement} element - contentEditable element
+   */
+  moveCaretToEnd(element) {
+    const range = document.createRange();
+    const selection = window.getSelection();
+
+    range.selectNodeContents(element);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+
 
   /**
    * Handle backspace
