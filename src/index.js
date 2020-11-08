@@ -13,6 +13,16 @@ require('./index.css').toString();
  * List Tool for the Editor.js 2.0
  */
 class List {
+
+  /**
+   * Notify core that read-only mode is supported
+   *
+   * @returns {boolean}
+   */
+  static get isReadOnlySupported() {
+    return true;
+  }
+
   /**
    * Allow to use native Enter behaviour
    *
@@ -44,8 +54,9 @@ class List {
    * @param {ListData} params.data - previously saved data
    * @param {object} params.config - user config for Tool
    * @param {object} params.api - Editor.js API
+   * @param {boolean} params.readOnly - read-only mode flag
    */
-  constructor({ data, config, api }) {
+  constructor({ data, config, api, readOnly }) {
     /**
      * HTML nodes
      *
@@ -56,6 +67,7 @@ class List {
     };
 
     this.api = api;
+    this.readOnly = readOnly;
 
     this.settings = [
       {
@@ -92,11 +104,7 @@ class List {
    * @public
    */
   render() {
-    const style = this._data.style === 'ordered' ? this.CSS.wrapperOrdered : this.CSS.wrapperUnordered;
-
-    this._elements.wrapper = this._make('ul', [this.CSS.baseBlock, this.CSS.wrapper, style], {
-      contentEditable: true,
-    });
+    this._elements.wrapper = this.makeMainTag(this._data.style);
 
     // fill with data
     if (this._data.items.length) {
@@ -244,6 +252,21 @@ class List {
   }
 
   /**
+   * Creates main <ul> or <ol> tag depended on style
+   *
+   * @param {string} style - 'ordered' or 'unordered'
+   * @returns {HTMLOListElement|HTMLUListElement}
+   */
+  makeMainTag(style){
+    const styleClass = style === 'ordered' ? this.CSS.wrapperOrdered : this.CSS.wrapperUnordered;
+    const tag = style === 'ordered' ? 'ol' : 'ul';
+
+    return this._make(tag, [this.CSS.baseBlock, this.CSS.wrapper, styleClass], {
+      contentEditable: !this.readOnly,
+    });
+  }
+
+  /**
    * Toggles List style
    *
    * @param {string} style - 'ordered'|'unordered'
@@ -258,6 +281,8 @@ class List {
       items[i].classList.toggle(this.CSS.wrapperUnordered, style === 'unordered');
     }
 
+    this._elements.wrapper.replaceWith(newTag);
+    this._elements.wrapper = newTag;
     this._data.style = style;
   }
 
