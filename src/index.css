@@ -18,9 +18,13 @@
 
     &-settings {
         display: flex;
+        align-items: center;
 
         .cdx-settings-button {
             width: 50%;
+        }
+        input {
+            padding: 5px;
         }
     }
 }
