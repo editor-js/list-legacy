@@ -18,7 +18,8 @@
   "exports": {
     ".": {
       "import": "./dist/list.mjs",
-      "require": "./dist/list.umd.js"
+      "require": "./dist/list.umd.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
@@ -32,8 +33,10 @@
   "devDependencies": {
     "postcss-nested": "^4.2.1",
     "postcss-nested-ancestors": "^2.0.0",
+    "typescript": "^5.5.3",
     "vite": "^4.5.0",
-    "vite-plugin-css-injected-by-js": "^3.3.0"
+    "vite-plugin-css-injected-by-js": "^3.3.0",
+    "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
     "@codexteam/icons": "^0.0.4"
