@@ -6,6 +6,10 @@ import './index.css';
 import { IconListBulleted, IconListNumbered } from '@codexteam/icons'
 
 /**
+ * @typedef {import('@editorjs/editorjs').PasteEvent} PasteEvent
+ */
+
+/**
  * @typedef {object} ListData
  * @property {string} style - can be ordered or unordered
  * @property {Array} items - li elements
