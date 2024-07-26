@@ -1,6 +1,6 @@
 {
   "name": "@editorjs/list",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "keywords": [
     "codex editor",
     "list",
@@ -32,11 +32,11 @@
     "email": "team@codex.so"
   },
   "devDependencies": {
-    "postcss-nested": "^4.2.1",
-    "postcss-nested-ancestors": "^2.0.0",
+    "postcss-nested": "^6.2.0",
+    "postcss-nested-ancestors": "^3.0.0",
     "typescript": "^5.5.3",
-    "vite": "^4.5.0",
-    "vite-plugin-css-injected-by-js": "^3.3.0",
+    "vite": "^5.3.5",
+    "vite-plugin-css-injected-by-js": "^3.5.1",
     "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
