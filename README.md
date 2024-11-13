@@ -2,8 +2,9 @@
 
 # List Tool for Editor.js
 
-This tool is deprecated and is no longer supported.
-You can use the [New List tool](https://github.com/editor-js/list) with more functionality and compatibility with old data
+> [!IMPORTANT]
+> This repository is deprecated and is no longer supported.
+Take a look at a new repository [List tool](https://github.com/editor-js/list) with more functionality and compatibility with old data.
 
 ![](assets/example.gif)
 
