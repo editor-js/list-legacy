@@ -2,7 +2,8 @@
 
 # List Tool for Editor.js
 
-This Tool for the [Editor.js](https://editorjs.io) allows you to add ordered or unordered (bulleted) lists to your article.
+This tool is deprecated and is no longer supported.
+You can use the [New List tool](https://github.com/editor-js/list) with more functionality and compatibility with old data
 
 ![](assets/example.gif)
 
